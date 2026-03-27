@@ -40,3 +40,5 @@ on
 .env.local
 .env.*.local
 
+#custom
+research_papers/
