@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv
+
+# uv (Astral)
+.venv/
+venv/
+__pycache__/
+*.egg-info/
+dist/
+build/
+.uv/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+on
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
