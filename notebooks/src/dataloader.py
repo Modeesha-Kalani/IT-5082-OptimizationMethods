@@ -16,6 +16,13 @@ def load_bike_data():
     # Combine into single dataframe (hourly data)
     hour_data = pd.concat([X, y], axis=1)
 
+    # Add original data columns (casual, registered)
+    original_data = bike_sharing.data.original
+    if "casual" in original_data.columns:
+        hour_data["casual"] = original_data["casual"].values
+    if "registered" in original_data.columns:
+        hour_data["registered"] = original_data["registered"].values
+
     print(
         f"Loaded hourly data: {hour_data.shape[0]} rows, {hour_data.shape[1]} columns"
     )
