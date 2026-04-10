@@ -26,9 +26,11 @@ TARGET_UTILIZATION_RATIO = 0.75
 CAPACITY_PERCENTILE = 95
 CAPACITY_STDDEV_FACTOR = 2.0
 
-N_INSTANCES = 3
-INSTANCE_CONFIGS = {
-    "small": {"n_time": 24, "n_stations": 3},
-    "medium": {"n_time": 48, "n_stations": 6},
-    "large": {"n_time": 120, "n_stations": 10},
-}
+# Instance configurations (n_time, n_stations, size_label)
+INSTANCE_SLICES_TEMPLATE = [
+    (24, 3, "small"),
+    (48, 6, "medium"),
+    (120, 10, "large"),
+    (None, 10, "real"),  # None means full dataset length
+]
+N_INSTANCES = len(INSTANCE_SLICES_TEMPLATE)
