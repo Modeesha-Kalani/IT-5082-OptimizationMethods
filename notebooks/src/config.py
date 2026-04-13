@@ -16,13 +16,29 @@ REAL_STATION_CLUSTERS = [
     ("Navy Yard / Ballpark", 38.8762, -77.0042, "mixed"),  # mixed-use
 ]
 
-# Solver parameters
-COST_PER_KM = 1.5
-PENALTY_PER_BIKE = 7.0
 MIN_STATION_CAPACITY = 2
 
-INITIAL_INVENTORY_RATIO = 0.75
-TARGET_UTILIZATION_RATIO = 0.75
+# Solver parameters
+COST_PER_KM = 1.5
+
+PENALTY_PER_BIKE = 50.0
+
+INITIAL_INVENTORY_RATIO = 0.80
+TARGET_UTILIZATION_RATIO = 1.0
+
+# Bikes rented in hour h become available again after RETURN_LAG_HOURS periods.
+RETURN_LAG_HOURS = 2
+# Scale the empirical return rate before adding returned bikes back to inventory.
+# Average dp_return_rate = 0.65; scale=1.55 keeps effective rate = 1.0 (fleet conserved).
+RETURN_RATE_SCALE = 1.55
+# Returned bikes are redistributed across nearby stations instead of snapping back to origin.
+RETURN_DISTANCE_DECAY_KM = 1.0
+# At most this fraction of total system capacity can be repositioned per period.
+MAX_REDISTRIBUTION_CAPACITY_RATIO = 0.20
+# Penalize end-of-hour inventory that is misaligned with the next-hour demand profile.
+INVENTORY_IMBALANCE_PENALTY = 0.01
+
+
 CAPACITY_PERCENTILE = 95
 CAPACITY_STDDEV_FACTOR = 2.0
 
@@ -31,6 +47,6 @@ INSTANCE_SLICES_TEMPLATE = [
     (24, 3, "small"),
     (48, 6, "medium"),
     (120, 10, "large"),
-    (None, 10, "real"),  # None means full dataset length
+    # (None, 10, "real"),  # None means full dataset length
 ]
 N_INSTANCES = len(INSTANCE_SLICES_TEMPLATE)
