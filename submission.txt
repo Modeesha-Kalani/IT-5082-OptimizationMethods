@@ -1,0 +1,3 @@
+Data Set: https://archive-beta.ics.uci.edu/dataset/275/bike+sharing+dataset/files
+Repo link : https://github.com/Modeesha-Kalani/IT-5082-OptimizationMethods.git
+YouTube : https://youtu.be/ewRITPkvRkI
